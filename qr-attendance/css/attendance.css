@@ -1,0 +1,237 @@
+*{
+    font-family: "Karla", sans-serif;
+}
+.con{
+    margin-top: 10px;
+}
+.wrapper{  
+    margin: 0 auto;
+    max-width: 90%;
+    width: 100%;
+
+}
+.outside-main{
+    margin-top: 14px;
+    height: 100%;
+}
+.inner-main{
+    margin: 0 auto;
+    max-width: 90%;
+    width: 100%;
+}
+.box-title{ 
+
+    padding: 10px 0;
+}
+.content {
+    padding: 30px 20px;
+    height: 750px;
+    display: grid;
+    grid-template-columns: 1fr 600px;
+    column-gap: 10px;
+}
+
+/*for table design*/
+.contenttable{
+    max-height: 100%;
+    background-color: white;
+    box-shadow: 0px 10px 20px #d9d9d9;        
+    border-radius: 15px;
+    padding: 10px;
+    display: grid;
+    grid-template-rows: 30px 1fr 20px;
+    row-gap: 10px;
+
+}
+.wrapTable{
+    max-height: 590px;
+    overflow-y: auto;
+    box-shadow: inset 0px -12px 10px -4px #00000049;
+}
+table{
+    border-collapse: collapse;   
+    font-size: 0.9em;
+    width: 900px;
+    margin-bottom: 100px;
+    
+}
+thead{
+    position: sticky;
+    top: 0px;
+    background-color: #272e44;
+    color: #fff;
+    
+}
+
+
+.ttable thead th{
+    padding: 8px 8px;
+}
+
+.ttable tbody td{
+    padding: 8px 8px;
+}
+.ttable tbody tr{
+    border-bottom: 1px solid rgb(228, 228, 228);
+    margin: 6px;
+}
+.ttable tbody tr:nth-of-type(even){
+    background-color: #f4f4f4b6;
+}
+/*
+.ttable tbody tr:nth-of-type(even) .studCol {
+    background-color: #3d987467;
+}
+.studCol.empty {
+    background-color: #3d987467;
+}
+*/
+
+
+
+
+
+
+.content-camera {
+    border-radius: 12px;
+    min-height: 100%;
+    box-shadow: 0px 10px 20px #d9d9d9;        
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    background-color: #fff;
+}
+
+.on-off-cam{
+    margin: 5px 0;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.scanner-con {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.viewport{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content-table{
+    margin: 0px 20px;
+}
+.modalBody{
+    padding: 10px;
+}
+.modalLabel{
+    margin-bottom: 15px;
+}
+.modalLabel label{
+    font-weight: 500;
+}
+
+
+.fordeleteBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.deleteAllBtn{
+    background-color: #7c0a02 ;
+    color: white;
+    width: 60%;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+.deleteAllBtn:hover{
+    background-color: #a40d02 ;
+}
+
+/*Button*/
+.deleteBtn{
+    background-color: crimson;
+    height: 30px;
+    width: 40px;
+    border: none;
+    border-radius: 5px;
+}
+
+.conHead{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+.conHead .left{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.conHead .right{
+    display: flex;
+    align-items: center;
+}
+.attendanceSearch input{
+    border-radius: 5px;
+    border: 1px solid #757575;
+    padding: 2px 8px;
+    font-size: 14px;
+    width: 220px;
+}
+
+.createNewDate button{
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    border: 0;
+    border-radius: 5px;
+    padding: 5px 12px;
+    cursor: pointer;
+    background-color: #F2EAFD;
+    color: #9253C3;
+    gap: 5px; 
+}
+.createNewDate button:hover{
+    background-color: #8200FF;
+    color: #fff;
+}
+
+.lastWeekBtn,
+.yesterdayBtn,
+.todayBtn{
+    font-size: 14px;
+    border: 0;
+    border-radius: 5px;
+    padding: 2px 8px;
+    cursor: pointer;
+    background-color: #F2EAFD;
+    color: #9253C3;
+}
+
+
+@media (max-width: 1151px){
+    .content{
+        all: unset;
+        display: grid;
+        grid-template-rows: 1fr 40%;
+        row-gap: 20px;
+        min-height: 100%;
+        height: 750px;
+    }
+}
