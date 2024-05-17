@@ -44,7 +44,45 @@ class Home extends Controller
         $user = new User();
         $attendance = new Attendance();
         $allotedDate = new AllotedDate();
+
+        $currentDate = date("m-d-Y");
+        $dateExists = $allotedDate->first(['dates' => $currentDate]);
+
+        if ($dateExists) {
+          $userExists = $user->first(['qr' => $qr_code]);
+          
+          if ($userExists) {
+              $attendanceExists = $attendance->first([
+                  'qr' => $qr_code,
+                  'date' => $currentDate
+              ]);
+
+              if (!$attendanceExists) {
+                  $attendance->studentName = $userExists->studentName;
+                  $attendance->studentCS = $userExists->studentCS;
+                  $attendance->date = $currentDate;
+                  $attendance->timeIn = date("h:i:s A");
+                  $attendance->qr = $userExists->qr;
+                  $attendance->save();
+                  redirect('home');
+              } 
+              else{
+                $_SESSION['errorsStudentRecorded'] = ['qr' => ''];
+                redirect('home');
+              }
+          } 
+          else {
+            $_SESSION['errorsDoesNotExists'] = ['qr' => ''];
+            redirect('home');
+          }
+        } 
+        else {
+          $_SESSION['errorsCreateNewDate'] = ['qr' => ''];
+          redirect('home');
+        }
+        /*
         $userExists = $user->first(['qr' => $qr_code]);
+
 
         if ($userExists) {
             $currentDate = date("m-d-Y");
@@ -79,6 +117,7 @@ class Home extends Controller
           $_SESSION['errorsDoesNotExists'] = ['qr' => ''];
           redirect('home');
         }
+        */
     }
   }
   public function deleteAllAttendance(){

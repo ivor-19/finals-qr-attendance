@@ -89,11 +89,11 @@
                       <?php foreach ($attendances as $item) { ?>
                         <tr>
                         <?php if ($item->studentName === "-" || $item->studentCS === "-" || $item->date === "-" || $item->timeIn === "-") { ?>
-                            <td><?= $item->studentName ?></td>
-                            <td><?= $item->studentCS ?></td>
-                            <td><?= $item->date ?></td>
-                            <td><?= $item->timeIn ?></td>
-                            <td>-</td> 
+                            <td class = "dateDivider"><?= $item->studentName ?></td>
+                            <td class = "dateDivider"><?= $item->studentCS ?></td>
+                            <td class = "dateDivider"><?= $item->date ?></td>
+                            <td class = "dateDivider"><?= $item->timeIn ?></td>
+                            <td class = "dateDivider">-</td> 
                           
 
                             <div class="qr-detected-container" style="display: none;">
