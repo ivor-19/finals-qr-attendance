@@ -6,12 +6,27 @@ class Home extends Controller
   public function index()
   {
 
-    $x = new Attendance();
-    $rows = $x->findAll();
+    $attendance = new Attendance();
+    $rows = $attendance->findAll();
 
     $allotedDates = new Alloteddate();
     $dates = $allotedDates->getDistinctDates('dates');
 
+    $currentDate = date("m-d-Y");
+    $dateExists = $allotedDates->first(['dates' => $currentDate]);
+    
+    if(!$dateExists){
+      $allotedDates->dates = $currentDate;
+      $allotedDates->save();
+
+      $attendance->studentName = '-';
+      $attendance->studentCS = '-';
+      $attendance->date = $currentDate;
+      $attendance->timeIn = '-';
+      $attendance->qr = '-';
+      $attendance->save();
+    }
+    
     $this->view('home/index', [
         'attendances' => $rows,
         'dates' => $dates
@@ -150,32 +165,20 @@ class Home extends Controller
         $attendance->save();
         redirect('home');
       }
-      //nsert the records into the attendanceyesterday database
-      /*$attendanceRecords = $attendance->findAll();
-      foreach ($attendanceRecords as $record) {
-          $attendanceYesterday->studentName = $record->studentName;
-          $attendanceYesterday->studentCS = $record->studentCS;
-          $attendanceYesterday->qr = $record->date;
-          $attendanceYesterday->timeIn = $record->timeIn;
-          $attendanceYesterday->qr = $record->qr;   
-          $attendanceYesterday->save();
-      }
-      */
-      //adding the date again
-
     }
   }
+  /* Optional Button Create
   public function createNewDate(){
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {     
-      $x = new AllotedDate();
+      $allotedDate = new AllotedDate();
       $attendance = new Attendance();
 
       $currentDate = date("m-d-Y");
-      $dateExists = $x->first(['dates' => $currentDate]);
+      $dateExists = $allotedDate->first(['dates' => $currentDate]);
       
       if(!$dateExists){
-        $x->dates = $currentDate;
-        $x->save();
+        $allotedDate->dates = $currentDate;
+        $allotedDate->save();
 
         $attendance->studentName = '-';
         $attendance->studentCS = '-';
@@ -191,5 +194,6 @@ class Home extends Controller
         redirect('home');
       }
     }
-  }  
+  }
+  */  
 }
