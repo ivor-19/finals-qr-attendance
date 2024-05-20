@@ -93,8 +93,8 @@
                           <?php foreach ($attendances as $item) { ?>
                               <tr>
                                   <?php
-                                  $currentDate = date('m-d-Y');
-                                  $isNotCurrentDate = ($item->date != $currentDate);
+                                    $currentDate = date('m-d-Y');
+                                    $isNotCurrentDate = ($item->date != $currentDate);
                                   ?>
                                   <?php if ($item->studentName === "-" || $item->studentCS === "-" || $item->date === "-" || $item->timeIn === "-") { ?>
                                       <td class="dateDivider"><?= $item->studentName ?></td>
@@ -205,7 +205,7 @@
                           </div>
                       </div>
                   </div>
-                  <button type="button" class="deleteAllBtn" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" style="width: 100%;">Delete All</button>
+                    <button type="button" class="deleteAllBtn" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" style="width: 100%;">Delete All</button>
                 </section>    
             </section>             
         </section>

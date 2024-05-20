@@ -5,6 +5,9 @@ class Home extends Controller
 {
   public function index()
   {
+    if (!Auth::logged_in()) {
+      redirect('login');
+    }
 
     $attendance = new Attendance();
     $rows = $attendance->findAll();
@@ -19,12 +22,14 @@ class Home extends Controller
       $allotedDates->dates = $currentDate;
       $allotedDates->save();
 
+      
       $attendance->studentName = '-';
       $attendance->studentCS = '-';
       $attendance->date = $currentDate;
       $attendance->timeIn = '-';
       $attendance->qr = '-';
       $attendance->save();
+      
     }
     
     $this->view('home/index', [
@@ -140,17 +145,21 @@ class Home extends Controller
       $selectedDate = $_POST['selectedDate'];
       $attendance = new Attendance();
 
-      if($selectedDate !== 'All'){
-        //deleting all row in that specific date
-        
-        $attendance->deleteByDate($selectedDate);
+      $currentDate = date('m-d-Y');
 
-        $attendance->studentName = '-';
-        $attendance->studentCS = '-';
-        $attendance->date = $selectedDate;
-        $attendance->timeIn = '-';
-        $attendance->qr = '-';
-        $attendance->save();
+      if($selectedDate !== 'All'){
+        if($selectedDate !== $currentDate){
+          $attendance->deleteByDate($selectedDate);
+        }
+        else{
+          $attendance->deleteByDate($selectedDate);
+          $attendance->studentName = '-';
+          $attendance->studentCS = '-';
+          $attendance->date = $selectedDate;
+          $attendance->timeIn = '-';
+          $attendance->qr = '-';
+          $attendance->save();
+        }
         redirect('home');
       }
       else{
