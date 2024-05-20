@@ -5,7 +5,7 @@ class Alloteddate extends Model
     public function save()
     {
         $data = [
-            'dates' => $this->dates
+            'date' => $this->date
         ];
         $this->insert($data);
     }

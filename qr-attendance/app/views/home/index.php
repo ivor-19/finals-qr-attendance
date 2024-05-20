@@ -53,8 +53,8 @@
                     <section class="left">
                         <section>
                             <select class="form-select" id="dateSelect" onchange="filterTableByDate()">
-                                <?php foreach ($dates as $date): ?>
-                                    <option class="dateOption"><?= $date->dates ?></option>
+                                <?php foreach ($date as $dates): ?>
+                                    <option class="dateOption"><?= $dates->date ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </section>
@@ -276,6 +276,7 @@
     });
 
     function filterTableByDate() {
+        const deleteAllBtn = document.querySelector('.deleteAllBtn');
         const dateSelect = document.getElementById("dateSelect");
         let selectedDate = dateSelect.value;
         document.getElementById('selectedDate').value = dateSelect.value; //this is to get the specific date to delete
@@ -298,6 +299,13 @@
                 row.style.display = "none";
             }
         });
+
+        if(selectedDate === "All"){
+            deleteAllBtn.style.display = "none";
+        }
+        else{
+            deleteAllBtn.style.display = "block";
+        }
     }
 
     window.addEventListener('DOMContentLoaded', function() {

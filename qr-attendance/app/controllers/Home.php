@@ -13,13 +13,13 @@ class Home extends Controller
     $rows = $attendance->findAll();
 
     $allotedDates = new Alloteddate();
-    $dates = $allotedDates->getDistinctDates('dates');
+    $date = $allotedDates->getDistinctDates('date');
 
     $currentDate = date("m-d-Y");
-    $dateExists = $allotedDates->first(['dates' => $currentDate]);
+    $dateExists = $allotedDates->first(['date' => $currentDate]);
     
     if(!$dateExists){
-      $allotedDates->dates = $currentDate;
+      $allotedDates->date = $currentDate;
       $allotedDates->save();
 
       
@@ -34,7 +34,7 @@ class Home extends Controller
     
     $this->view('home/index', [
         'attendances' => $rows,
-        'dates' => $dates
+        'date' => $date
     ]);
   }
   public function yesterday()
@@ -66,7 +66,7 @@ class Home extends Controller
         $allotedDate = new AllotedDate();
 
         $currentDate = date("m-d-Y");
-        $dateExists = $allotedDate->first(['dates' => $currentDate]);
+        $dateExists = $allotedDate->first(['date' => $currentDate]);
 
         if ($dateExists) {
           $userExists = $user->first(['qr' => $qr_code]);
@@ -106,7 +106,7 @@ class Home extends Controller
 
         if ($userExists) {
             $currentDate = date("m-d-Y");
-            $dateExists = $allotedDate->first(['dates' => $currentDate]);
+            $dateExists = $allotedDate->first(['date' => $currentDate]);
 
             if ($dateExists) {
                 $attendanceExists = $attendance->first([
@@ -144,12 +144,15 @@ class Home extends Controller
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {      
       $selectedDate = $_POST['selectedDate'];
       $attendance = new Attendance();
+      $allotedDates = new Alloteddate();
 
       $currentDate = date('m-d-Y');
 
       if($selectedDate !== 'All'){
         if($selectedDate !== $currentDate){
           $attendance->deleteByDate($selectedDate);
+          $allotedDates->deleteByDate($selectedDate);
+          
         }
         else{
           $attendance->deleteByDate($selectedDate);
@@ -183,7 +186,7 @@ class Home extends Controller
       $attendance = new Attendance();
 
       $currentDate = date("m-d-Y");
-      $dateExists = $allotedDate->first(['dates' => $currentDate]);
+      $dateExists = $allotedDate->first(['date' => $currentDate]);
       
       if(!$dateExists){
         $allotedDate->dates = $currentDate;
