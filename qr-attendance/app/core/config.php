@@ -5,6 +5,6 @@ define('PATH', 'C:/xampp/htdocs/WEBA-FINALS-PROJECT-BSIS3D/qr-attendance/app/vie
 
 
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'mvc_db');
+define('DB_NAME', 'qr_db');
 define('DB_USER', 'root');
 define('DB_PASS', '');
