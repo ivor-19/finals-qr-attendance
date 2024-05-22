@@ -28,7 +28,8 @@ class Login extends Controller
             } else {
                 $_SESSION['errorEmailorPass'] = true;
             }
-        } else {
+        } 
+        else {
             $_SESSION['errorEmailorPass'] = true;
         }
     }

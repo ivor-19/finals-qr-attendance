@@ -1,0 +1,21 @@
+*{
+    font-family: "Karla", sans-serif;
+}
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img{
+    height: 400px;
+}
+.con{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.notfound{
+    font-size: 30px;
+    margin-bottom: 10px;
+}

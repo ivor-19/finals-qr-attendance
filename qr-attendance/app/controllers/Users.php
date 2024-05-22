@@ -1,156 +1,123 @@
 <?php
 date_default_timezone_set('Asia/Manila');
 
-class Users extends Controller
-{
-  public function index()
+class Users extends Controller {
+
+  public function index() 
   {
-    if (!Auth::logged_in()) {
-      redirect('login');
-    }
+      if (!Auth::logged_in()) {
+          redirect('login');
+      }
 
-    $x = new User();
-    $rows = $x->findAll();
-
-    $this->view('users/index', [
-      'users' => $rows
-    ]);
-  }
-  public function create()
-  {
-    $errors = [];
-    $x = new User();
-
-    if (count($_POST) > 0){
-        if ($x->validate($_POST)){
-
-            $x->insert($_POST);
-            redirect('users');
-
-        }else{
-            $_SESSION['errors'] = $x->errors;
-            redirect('users');
-        }
-        
-    }
+      $x = new User();
+      $rows = $x->findAll();
+      $this->view('users/index', ['users' => $rows]);
   }
 
-  public function edit($id)
+  public function create() 
   {
-    $x = new User();
-    $arr['id'] = $id;
-    $row = $x->first($arr);
+      $errors = [];
+      $x = new User();
 
-    if (count($_POST) > 0) {
-
-      $x->update($id, $_POST);
-
-      redirect('users');
-    }
-
-    $this->view('users/edit', [
-      'user' => $row
-    ]);
+      if (count($_POST) > 0) {
+          if ($x->validate($_POST)) {
+              $x->insert($_POST);
+              redirect('users');
+          } 
+          else {
+              $_SESSION['errors'] = $x->errors;
+              redirect('users');
+          }
+      }
   }
 
-  public function delete123($id)
+  public function edit($id) 
+  {
+      $x = new User();
+      $arr['id'] = $id;
+      $row = $x->first($arr);
+
+      if (count($_POST) > 0) {
+          $x->update($id, $_POST);
+          redirect('users');
+      }
+
+      $this->view('users/edit', ['user' => $row]);
+  }
+
+  public function delete123($id) 
   {
       if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           // Retrieve user data before deletion
           $x = new User();
           $user = $x->first(['id' => $id]);
           $timeIn = date("Y-m-d h:i:s A");
+
           // Check if user exists
           if ($user) {
-              // Insert user data into the archive table
               $archive = new Archive();
               $archive->studentID = $user->studentID;
               $archive->studentName = $user->studentName;
               $archive->studentCS = $user->studentCS;
               $archive->qr = $user->qr;
               $archive->tikmeIN = $timeIn;
-
-              /*meaning neto - yung data ni qr, malalagay both sa table column na qr and tikmeIN
-                table column - $archive->qr
-
-                $archive->qr = $user->qr;
-                $archive->tikmeIN = $user->qr;
-              */
-
+              /*meaning neto - yung data ni qr, malalagay both sa table column na qr and tikmeIN table column - $archive->qr $archive->qr = $user->qr; $archive->tikmeIN = $user->qr; */
               $archive->save();
 
-              // Delete the user from the original table using custom Model's delete method
               $userModel = new User();
               $userModel->delete($id);
           }
-  
+
           redirect('users');
       } else {
-          // Handle other cases, such as displaying a confirmation page
+          
       }
   }
 
-  public function archive(){
-    $x = new Archive();
-    $rows = $x->findAll();
-
-    $this->view('users/archive', [
-      'archives' => $rows
-    ]);
-  }
-  public function archiveDelete($id){
-    $x = new Archive();
-    $arr['id'] = $id;
-    $row = $x->first($arr);
-
-    if ($_SERVER["REQUEST_METHOD"] === "POST") { // Check if request method is POST
-
-        $x->delete($id);
-
-        redirect('users/archive');
-        exit; // Add exit to prevent further execution
-    }
-
-    $this->view('users/archive', [
-      'archives' => $row
-    ]);
-  }
-  public function retrieveUser($id){
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      // Retrieve user data before deletion
+  public function archive() 
+  {
       $x = new Archive();
-      $archive = $x->first(['id' => $id]);
-      
-      // Check if user exists
-      if ($archive) {
-          // Insert user data into the archive table
-          $user = new User();
-          $user->studentID = $archive->studentID;
-          $user->studentName = $archive->studentName;
-          $user->studentCS = $archive->studentCS;
-          $user->qr = $archive->qr;
-     
+      $rows = $x->findAll();
+      $this->view('users/archive', ['archives' => $rows]);
+  }
 
-          /*meaning neto - yung data ni qr, malalagay both sa table column na qr and tikmeIN
-            table column - $archive->qr
+  public function archiveDelete($id) {
+      $x = new Archive();
+      $arr['id'] = $id;
+      $row = $x->first($arr);
 
-            $archive->qr = $user->qr;
-            $archive->tikmeIN = $user->qr;
-          */
-          
-          $user->save();
-
-          
-          $archiveModel = new Archive();
-          $archiveModel->delete($id);
-          
-         
+      if ($_SERVER["REQUEST_METHOD"] === "POST") {
+          $x->delete($id);
+          redirect('users/archive');
+          exit; 
       }
-      
-      redirect('users/archive');
-    } else {
-      
-    }
+      $this->view('users/archive', ['archives' => $row]);
+  }
+  
+  public function retrieveUser($id)
+  {
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+          $x = new Archive();
+          $archive = $x->first(['id' => $id]);
+
+          // Check if user exists
+          if ($archive) {
+              // Insert user data into the archive table
+              $user = new User();
+              $user->studentID = $archive->studentID;
+              $user->studentName = $archive->studentName;
+              $user->studentCS = $archive->studentCS;
+              $user->qr = $archive->qr;
+              $user->save();
+
+              $archiveModel = new Archive();
+              $archiveModel->delete($id);
+          }
+
+          redirect('users/archive');
+      } else {
+          // Handle other cases, if needed
+      }
   }
 }
 
