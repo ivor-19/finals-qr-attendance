@@ -35,15 +35,16 @@
     <section class="wrapper">
       <section class="con-left">
         <section>
-          <img src="../image/qr-4.png" alt="" class="qr-image">
+          <img src="../image/QR-Code.png" alt="" class="qr-image">
         </section>
       </section>
       <section class="con-right">
         <section class="box">
           <section class="con-title">
+            <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="rgba(96, 27, 253, 1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-codesandbox"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="7.5 4.21 12 6.81 16.5 4.21"/><polyline points="7.5 19.79 7.5 14.6 3 12"/><polyline points="21 12 16.5 14.6 16.5 19.79"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" x2="12" y1="22.08" y2="12"/></svg>
             <h2 class="login-title">Welcome!</h2>
+            <span>Lorem ipsum dolor sit amet</span>
           </section>
-          <hr>
           <section class="con-form">
             <form action="" method="POST" class="">
               <?php if (isset($_SESSION['errorEmailorPass']) && $_SESSION['errorEmailorPass'] === true): ?>
@@ -53,6 +54,14 @@
                 </div>
                 <?php
                 unset($_SESSION['errorEmailorPass']);
+              endif; ?>
+              <?php if (isset($_SESSION['errorBlank']) && $_SESSION['errorBlank'] === true): ?>
+                <div id="addErrorMsg" class="alert alert-warning alert-dismissible fade show addErrorMsg" role="alert" style="display:'block';">
+                  Email or Password is Required.
+                  <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <?php
+                unset($_SESSION['errorBlank']);
               endif; ?>
 
               <div class="mb-2 con-email">
@@ -72,6 +81,11 @@
       </section>
     </section>
   </main>
+  <footer>
+    <span>@2024 BSIS-3D. All right reserve.</span>
+  </footer>
 </body>
 
-<?php include "partials/footer.php" ?>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+

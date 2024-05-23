@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2024 at 06:34 AM
+-- Generation Time: May 23, 2024 at 07:00 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -73,7 +73,9 @@ INSERT INTO `alloteddates` (`id`, `date`) VALUES
 (49, '05-18-2024'),
 (50, '05-19-2024'),
 (51, '05-21-2024'),
-(52, '05-22-2024');
+(52, '05-22-2024'),
+(53, '05-23-2024'),
+(54, '05-24-2024');
 
 -- --------------------------------------------------------
 
@@ -151,8 +153,13 @@ INSERT INTO `attendances` (`id`, `studentName`, `studentCS`, `date`, `timeIn`, `
 (289, 'Adonis Antetokounmpo', 'BSIS-3D', '05-21-2024', '12:07:06 AM', 'H3K6V0xriU'),
 (295, '-', '-', '05-22-2024', '-', '-'),
 (296, 'Deniel Ivor Cruz', 'BSIS-3D', '05-22-2024', '11:03:26 AM', '3gSWttvKmM'),
-(297, 'Adonis Antetokounmpo', 'BSIS-3D', '05-22-2024', '12:08:50 PM', 'H3K6V0xriU'),
-(299, 'Lebrown Jeyms', 'NBA-210', '05-22-2024', '12:25:02 PM', 'zhldtYaITi');
+(300, 'Lebrown Jeyms', 'NBA-210', '05-22-2024', '12:36:44 PM', 'zhldtYaITi'),
+(301, 'Adonis Antetokounmpo', 'BSIS-3D', '05-22-2024', '12:37:06 PM', 'H3K6V0xriU'),
+(309, '-', '-', '05-23-2024', '-', '-'),
+(310, 'Adonis Antetokounmpo', 'BSIS-3D', '05-23-2024', '01:44:36 PM', 'H3K6V0xriU'),
+(312, 'Deniel Ivor Cruz', 'BSIS-3D', '05-23-2024', '02:47:05 PM', '3gSWttvKmM'),
+(313, 'James Warren Dela Cruz YE', 'BSIS-3D', '05-23-2024', '10:43:27 PM', '1FEI5fefFQ'),
+(317, '-', '-', '05-24-2024', '-', '-');
 
 -- --------------------------------------------------------
 
@@ -208,7 +215,17 @@ INSERT INTO `users` (`id`, `studentID`, `studentName`, `studentCS`, `qr`) VALUES
 (2, 'ma21121212', 'Adonis Antetokounmpo', 'BSIS-3D', 'H3K6V0xriU'),
 (5, 'ma21222332', 'Son Gokusss', 'BSIS-2DA', 'EKF3IGq9Qy'),
 (6, 'ma21012111', 'Lebrown Jeyms', 'NBA-210', 'zhldtYaITi'),
-(7, 'Test01', 'Test01', 'Test01', 'targh8LXQo');
+(7, 'Test01', 'Test01', 'Test01', 'targh8LXQo'),
+(8, 'wrvreverb', 'erberb', 'erberb', '6QfDkpdc4L'),
+(9, 'wegewg', 'wefw', 'wefewf', 'eN8c9HDWxU'),
+(10, 'wegerg', 'argaerg', 'argar', 'TnWC6R5EG0'),
+(11, 'rtntr', 'nrstns', 'srtnsrtn', 'do0TMQp2x1'),
+(12, '43b34b', '3b34b', 'erebeb', 'XEHX1w3TMt'),
+(13, '34brb', 'abearba', 'earberb', 'HOSobyQNPa'),
+(14, 'erger', 'greg', 'rgear', 't2kCEOWJSQ'),
+(15, 'e erb', 'erber', 'berb', 'N7n16FI8OH'),
+(16, 'hlhu', 'jhkh', 'jhk', 'HiCpGmbso1'),
+(19, 'ma21011110', 'James Warren Dela Cruz YE', 'BSIS-3D', '1FEI5fefFQ');
 
 --
 -- Indexes for dumped tables
@@ -264,19 +281,19 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `alloteddates`
 --
 ALTER TABLE `alloteddates`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `archives`
 --
 ALTER TABLE `archives`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `attendances`
 --
 ALTER TABLE `attendances`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=300;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=318;
 
 --
 -- AUTO_INCREMENT for table `attendyesterdays`
@@ -288,7 +305,7 @@ ALTER TABLE `attendyesterdays`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

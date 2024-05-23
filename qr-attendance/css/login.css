@@ -1,5 +1,6 @@
 *{
     font-family: "Karla", sans-serif;
+    margin: 0;
 }
 /*nav-content*/
 body{
@@ -9,15 +10,22 @@ body{
     overflow: hidden;
 }
 nav{
-    height: 60px;
-    top: -4%;
+    height: 50px;
+    top: 0;
     right: 0;
     left: 0;
     z-index: 1000;
     position: absolute;
+    /*
+    background-color: transparent !important;
+    background-image: url('../image/grid3.jpeg') !important;
+    background-repeat: repeat !important;
+    background-size: 200px;
+    */
 }
 .outer{
    height: 100%;
+
 }
 .inner{
     margin: 0 auto;
@@ -48,8 +56,9 @@ main{
     margin-top: 50px;
     overflow: hidden;
 }
-.qr-image{
-    height: 500px;
+.qr-image {
+    height: 700px;
+
 }
 .wrapper{
     position: relative;
@@ -81,8 +90,8 @@ main{
 }
 .con-right{
     display: flex;
-    align-items: center;
     justify-content: center;
+    margin-top: 140px;
 }
 
 .box{
@@ -93,6 +102,16 @@ main{
     border-radius: 15px;
     width: 500px;
     padding: 20px;
+}
+.con-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+.con-title span{
+    font-size: 11px;
 }
 
 .con-email,
@@ -107,18 +126,29 @@ main{
     height: auto;
 }
 .loginBtn{
-    border: none;
     border-radius: 18px;
     cursor: pointer;
     width: 100%;
     padding: 10px 0;
     font-weight: 600;
     letter-spacing: 3px;
+    border: none;
     background-color: rgba(129, 73, 255, 1);
     box-shadow: 0px 10px 20px #d9d9d9;  
     color: whitesmoke;
+    
 }
 .loginBtn:hover{
     background-color: rgba(96, 27, 253, 1);
     box-shadow: 0px 10px 20px #b0b0b0;  
+    color: whitesmoke;
+    
+}
+
+footer{
+    margin-top: 10px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

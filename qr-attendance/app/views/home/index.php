@@ -41,7 +41,7 @@
     <div class="inner-main">
         <section class="content">
             <section class="content-camera">
-                <h5 class="text-center">Scan your QR Code here for your attendance</h5>
+                <h5 class="text-center">Scan your QR Code</h5>
                 <div class="scanner-con">
                     <video id="interactive" class="viewport"></video>
                 </div>
