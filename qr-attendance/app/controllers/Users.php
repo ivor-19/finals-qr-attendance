@@ -115,9 +115,51 @@ class Users extends Controller {
           }
 
           redirect('users/archive');
-      } else {
+      } 
+      else {
           // Handle other cases, if needed
       }
+  }
+  public function exportTable()
+  {
+      $output = '';
+      $user = new User();
+      $rows = $user->findAll();
+  
+      if (count($rows) > 0) {
+          $output .= '<table class="table" bordered="1">
+              <tr>
+                  <th>#</th>
+                  <th>Student ID</th>
+                  <th>Name</th>
+                  <th>Course & Section</th>
+                  <th>QR Code</th>
+              </tr>';
+  
+          $count = 1;
+          foreach ($rows as $row) {
+              $output .= '<tr>
+                  <td>' . $row->id . '</td>
+                  <td>' . $row->studentID . '</td>
+                  <td>' . $row->studentName . '</td>
+                  <td>' . $row->studentCS . '</td>
+                  <td>' . $row->qr . '</td>
+              </tr>';
+              $count++;
+          }
+          $output .= '</table>';
+  
+          header('Content-Type: application/vnd.ms-excel');
+          header('Content-Disposition: attachment; filename="student_list_QR.xls"');
+          echo $output;
+      } 
+      else {
+          redirect('users');
+      }
+  }
+  public function importTable()
+  {
+    redirect('users');
   }
 }
 

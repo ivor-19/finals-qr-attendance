@@ -39,14 +39,15 @@
     border-radius: 15px;
     padding: 10px;
     display: grid;
-    grid-template-rows: 30px 1fr 20px;
-    row-gap: 10px;
+    grid-template-rows: 30px 30px 1fr;
+ 
 
 }
 .wrapTable{
     max-height: 590px;
     overflow-y: auto;
     box-shadow: inset 0px -12px 10px -4px #00000049;
+    margin-top: 10px;
 }
 table{
     border-collapse: collapse;   
@@ -91,6 +92,12 @@ thead{
     font-weight: 700;
     color: whitesmoke;
     */
+}
+.ex{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
 }
 
 .content-camera {
@@ -148,17 +155,20 @@ thead{
 .fordeleteBtn{
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
+    justify-content: space-between;
+
+
+    padding-top: 20px;
 }
 .deleteAllBtn{
     background-color: #7c0a02 ;
     color: white;
-    width: 60%;
+    width: auto;
     border: none;
-    border-radius: 12px;
+    border-radius: 5px;
     cursor: pointer;
     padding: 5px 10px;
+    font-size: 11px;
 }
 .deleteAllBtn:hover{
     background-color: #a40d02 ;

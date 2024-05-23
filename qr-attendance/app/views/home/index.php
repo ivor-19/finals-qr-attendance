@@ -59,6 +59,7 @@
                             </select>
                         </section>
                         <section>
+                           
                             <!-- Create A New Date (Optional)
                             <div class="createNewDate" style="display:none;">
                                 <form id="createDateForm" action="<?= ROOT ?>/home/createNewDate" method="POST" style="display: inline;">
@@ -76,7 +77,39 @@
                             <input class="txtSearch" id="txtSearch" type="text" placeholder="Search">
                         </div>
                     </section>
-                </section>
+                </section>               
+                <section class="fordeleteBtn">
+                  <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true" data-bs-backdrop="static">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body modalBody">
+                                  <div class="modalLabel">
+                                      <label for="lbldate">Date</label>
+                                      <input name="inputDate" id="inputDate" type="text" value="" class="form-control" disabled>
+                                  </div>
+                              </div>
+                              <div class="modal-footer">
+                                  <form id="deleteAllForm" action="<?= ROOT ?>/home/deleteAllAttendance/" method="POST">
+                                      <input type="hidden" name="selectedDate" id="selectedDate" value="">
+                                      <button type="submit" class="btn btn-danger btn-sm mainDeleteAttendance">Delete</button>
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <form id="exportExcel" action = '<?= ROOT ?>/home/exportExcel/' method="POST" style="display: inline;">
+                    <input type="hidden" name="selectedDate2" id="selectedDate2" value="">
+                    <button class = "ex" type = "submit">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-down"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></svg>
+                        <span>Export to Excel</span>
+                    </button>
+                  </form>
+                  <button type="button" class="deleteAllBtn" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Delete All</button>
+                </section>  
                 <section class="wrapTable">
                   <table class="ttable" style="width: 100%;">
                     <thead>
@@ -182,31 +215,7 @@
                     </tbody>            
                   </table>
                 </section>    
-                <section class="fordeleteBtn">
-                  <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true" data-bs-backdrop="static">
-                      <div class="modal-dialog">
-                          <div class="modal-content">
-                              <div class="modal-header">
-                                  <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body modalBody">
-                                  <div class="modalLabel">
-                                      <label for="lbldate">Date</label>
-                                      <input name="inputDate" id="inputDate" type="text" value="" class="form-control" disabled>
-                                  </div>
-                              </div>
-                              <div class="modal-footer">
-                                  <form id="deleteAllForm" action="<?= ROOT ?>/home/deleteAllAttendance/" method="POST">
-                                      <input type="hidden" name="selectedDate" id="selectedDate" value="">
-                                      <button type="submit" class="btn btn-danger btn-sm mainDeleteAttendance">Delete</button>
-                                  </form>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                    <button type="button" class="deleteAllBtn" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" style="width: 100%;">Delete All</button>
-                </section>    
+                 
             </section>             
         </section>
       </section>
@@ -280,6 +289,7 @@
         const dateSelect = document.getElementById("dateSelect");
         let selectedDate = dateSelect.value;
         document.getElementById('selectedDate').value = dateSelect.value; //this is to get the specific date to delete
+        document.getElementById('selectedDate2').value = dateSelect.value;
         document.getElementById('inputDate').value = dateSelect.value;
 
         if (!selectedDate) {

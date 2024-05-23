@@ -63,8 +63,8 @@
 
 <div class="con">
   <div class="wrapper">
-      <div class="t">
-          <div class="box-title d-flex justify-content-between align-items-center">
+      <div class="contentMain">
+          <section class="contentHead">
                 <h2>List of Users</h2>
                 <div>
                     <a href="<?= ROOT ?>/users/archive" class="btn btn-primary">Archive</a>
@@ -72,9 +72,9 @@
                     <button type="button" class="btn btn-primary addBtn" data-bs-toggle="modal" data-bs-target="#confirmAddModal">Add New</button>
                 </div>
 
-          </div>
+          </section>
           <hr>
-          <div class = "contenttable">
+          <section class = "contenttable">
               <table class ="ttable"id="usersTable">
                 <thead>
                   <tr>
@@ -199,8 +199,21 @@
                   <?php } ?>
                 </tbody>
               </table>
-          </div>
-          
+          </section>
+          <section class = "contentBottom">
+            <form id="exportForm" action = '<?= ROOT ?>/users/exportTable/' method="POST" style="display: inline;">
+              <button class = "ex" type = "submit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-up"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M12 12v6"/><path d="m15 15-3-3-3 3"/></svg>
+                <span>Export to Excel</span>
+              </button>
+            </form>
+            <form id="importForm" action = '<?= ROOT ?>/users/importTable/' method="POST" style="display: inline;">
+              <button class = "im">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-down"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></svg>
+                <span>Import from Excel</span>
+              </button>
+            </form>
+          </section>
       </div>
   </div>
 </div>
